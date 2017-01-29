@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Blog from './Blog.js';
-import Profile from './Profile.js';
+import Navigation from './Navigation.js';
 import '../styles/App.scss';
 
 /**
@@ -19,14 +19,9 @@ class App extends Component {
    */
   render() {
     return (
-      <div className="App">
-        <div className="Blog container">
-          <div className="row">
-            {/* Profile section */}
-            <Profile />
-            {/* Blog section */}
-            <Blog />
-          </div>
+      <div id="App" className="container-fluid bg-faded">
+        <div className="row">
+          <Navigation />
         </div>
       </div>
     );
