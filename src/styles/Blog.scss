@@ -1,3 +1,6 @@
-.Blog {
-  margin-bottom: 2rem;
+#Blog {
+  &.blog-container {
+    height: 20vh;
+    background: #ddd;
+  }
 }

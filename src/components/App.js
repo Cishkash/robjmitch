@@ -23,6 +23,14 @@ class App extends Component {
         <div className="row">
           <Navigation />
         </div>
+        <div className="row justify-content-md-left">
+          <div className="col-9">
+            <Blog />
+          </div>
+          <div className="col-3">
+            <div className="sidebar"> </div>
+          </div>
+        </div>
       </div>
     );
   }

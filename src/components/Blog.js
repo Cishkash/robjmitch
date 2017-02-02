@@ -11,7 +11,9 @@ import '../styles/Blog.scss';
 class Blog extends Component {
   render() {
     return (
-      <div></div>
+      <div id="Blog" className="blog-container">
+        
+      </div>
     );
   }
 }
