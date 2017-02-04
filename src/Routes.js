@@ -8,6 +8,4 @@ const Routes = (props) => (
   </Router>
 );
 
-console.log(Routes);
-
 export default Routes;
