@@ -7,7 +7,6 @@ import '../styles/App.scss';
  * App component class.
  *
  * @class Component.App
- * @constructor
  * @extends React.Component
  */
 class App extends Component {
@@ -19,16 +18,20 @@ class App extends Component {
    */
   render() {
     return (
-      <div id="App" className="container-fluid bg-faded">
-        <div className="row">
-          <Navigation />
-        </div>
-        <div className="row justify-content-md-left">
-          <div className="col-9">
-            <Blog />
+      <div id="App">
+        <div className="container-fluid bg-faded">
+          <div className="row navigation-row">
+            <Navigation />
           </div>
-          <div className="col-3">
-            <div className="sidebar"> </div>
+        </div>
+        <div className="container">
+          <div className="row justify-content-md-left">
+            <div className="col-9">
+              <Blog />
+            </div>
+            <div className="col-3">
+              <div className="sidebar"> </div>
+            </div>
           </div>
         </div>
       </div>

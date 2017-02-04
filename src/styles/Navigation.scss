@@ -1,11 +1,16 @@
-#Navigation {
-  .rjm-brand {
-    border-bottom: 1px solid #ddd;
-    font-family: 'Righteous', cursive;
-    padding: 0.8rem 0;
-  }
-  .navbar {
-    margin-top: 0;
-    padding: 0 0.5rem 0.5rem;
-  }
+#Navigation
+{
+    .rjm-brand
+    {
+        font-family: 'Righteous', cursive;
+
+        padding: .8rem 0;
+
+        border-bottom: 1px solid #ddd;
+    }
+    .navbar
+    {
+        margin-top: 0;
+        padding: 0 .5rem .5rem;
+    }
 }

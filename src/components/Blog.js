@@ -10,7 +10,7 @@ import '../styles/Blog.scss';
  */
 class Blog extends Component {
   /**
-   * Constructor for initializing posts state
+   * Constructor for initializing posts state.
    *
    * @event constructor
    * @return {undefined}
@@ -41,10 +41,15 @@ class Blog extends Component {
    * @return {Object}
    */
   render() {
-    if (!this.state.posts) return null
+    if (!this.state.posts) return null;
     return (
       <div id="Blog" className="blog-container">
-        <h3>{this.state.posts.map(post => post.title)}</h3>
+        {this.state.posts.map(post => (
+          <div className="post-card">
+            <h3>{post.title}</h3>
+            <h5>{post.body}</h5>
+          </div>
+        ))}
       </div>
     );
   }

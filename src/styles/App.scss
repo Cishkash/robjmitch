@@ -1,5 +1,7 @@
-#App {
-  > .row:first-child {
-    border-bottom: 5px solid #ccc;
-  }
+#App
+{
+    .navigation-row
+    {
+        border-bottom: .3rem solid #ddd;
+    }
 }
