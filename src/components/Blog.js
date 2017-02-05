@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
+
 import '../styles/Blog.scss';
 
 /**
@@ -42,14 +43,24 @@ class Blog extends Component {
    */
   render() {
     if (!this.state.posts) return null;
+
     return (
-      <div id="Blog" className="blog-container">
-        {this.state.posts.map(post => (
-          <div className="post-card">
-            <h3>{post.title}</h3>
-            <h5>{post.body}</h5>
+      <div id="Blog" className="container">
+        <div className="row justify-content-md-left">
+          <div className="col-9">
+            <div className="blog-container">
+              {this.state.posts.map(post => (
+                <div className="post-card" key={post.title}>
+                  <h3>{post.title}</h3>
+                  <h5>{post.body}</h5>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+          <div className="col-3">
+            <div className="sidebar"> </div>
+          </div>
+        </div>
       </div>
     );
   }

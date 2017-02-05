@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Blog from './Blog.js';
 import Navigation from './Navigation.js';
 import '../styles/App.scss';
+import landingImage from '../../public/images/landing-image.jpg';
 
 /**
- * App component class.
+ * App component class. Renders the navigation bar for the application and
+ * provides an outlet for children routes within the index route.
  *
  * @class Component.App
  * @extends React.Component
@@ -19,21 +20,9 @@ class App extends Component {
   render() {
     return (
       <div id="App">
-        <div className="container-fluid bg-faded">
-          <div className="row navigation-row">
-            <Navigation />
-          </div>
-        </div>
-        <div className="container">
-          <div className="row justify-content-md-left">
-            <div className="col-9">
-              <Blog />
-            </div>
-            <div className="col-3">
-              <div className="sidebar"> </div>
-            </div>
-          </div>
-        </div>
+        <Navigation />
+        <img src={landingImage} className="img-fluid" role="presentation" />
+        {this.props.children}
       </div>
     );
   }

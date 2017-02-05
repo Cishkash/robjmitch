@@ -1,6 +1,8 @@
 import React from 'react';
 import { Router, Route } from 'react-router'
 import App from './components/App.js';
+import Blog from './components/Blog.js';
+import Resume from './components/Resume.js';
 
 /**
  * Sets up the routes for the application
@@ -9,7 +11,10 @@ import App from './components/App.js';
  */
 const Routes = (props) => (
   <Router {...props}>
-    <Route path="/" component={App}/>
+    <Route path="/" component={App}>
+      <Route path="/blog" component={Blog}/>
+      <Route path="/resume" component={Resume}/>
+    </Route>
   </Router>
 );
 
