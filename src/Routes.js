@@ -1,6 +1,7 @@
 import React from 'react';
-import { Router, Route } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 import App from './components/App.js';
+import Index from './components/Index.js';
 import Blog from './components/Blog.js';
 import Resume from './components/Resume.js';
 
@@ -12,6 +13,7 @@ import Resume from './components/Resume.js';
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App}>
+      <IndexRoute component={Index}/>
       <Route path="/blog" component={Blog}/>
       <Route path="/resume" component={Resume}/>
     </Route>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation.js';
 import '../styles/App.scss';
-import landingImage from '../../public/images/landing-image.jpg';
 
 /**
  * App component class. Renders the navigation bar for the application and
@@ -21,7 +20,6 @@ class App extends Component {
     return (
       <div id="App">
         <Navigation />
-        <img src={landingImage} className="img-fluid" role="presentation" />
         {this.props.children}
       </div>
     );

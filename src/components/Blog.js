@@ -48,14 +48,16 @@ class Blog extends Component {
       <div id="Blog" className="container">
         <div className="row justify-content-md-left">
           <div className="col-9">
-            <div className="blog-container">
-              {this.state.posts.map(post => (
-                <div className="post-card" key={post.title}>
-                  <h3>{post.title}</h3>
-                  <h5>{post.body}</h5>
+            {this.state.posts.map(post => (
+              <div className="media post-card" key={post.title}>
+                <img className="d-flex align-self-start mr-3 rounded-circle"
+                     src={post.image} alt="Just up here thinkin" />
+                <div className="media-body">
+                  <h3 className="mt-0">{post.title}</h3>
+                  <p>{post.body}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
           <div className="col-3">
             <div className="sidebar"> </div>
