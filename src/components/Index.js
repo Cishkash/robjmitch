@@ -8,9 +8,34 @@ class Index extends Component {
         <img src="/images/landing-image.jpg" className="img-fluid" role="presentation" />
         <div className="container">
           <div className="row">
-            <section className="about-me">
+            <section className="about-me col-9">
               <h2>Let's talk about me for a little bit</h2>
-              <p>I am a web developer.</p>
+              <p>
+                I'm a five year experienced front end web developer. You'll
+                typically find me working with Javascript, HTML, and CSS using
+                Ember or React JS frameworks, SASS as a CSS preprocessor, and a
+                variety of modules in between. Although most of my code belongs
+                to corporate applications, I do have a couple public projects on
+                my Github and have become more active with having public
+                projects.
+              </p>
+              <p>
+                While I do define my professional career as a front end
+                developer, I am open to developing on the back end using NodeJS.
+                I have connected to public APIs like Vimeo and League of Legends
+                to create small applications, one of which I used in a
+                competition (the other was just for fun) and have experience
+                connecting to firebase to serve up some nosql data.
+              </p>
+              <p>
+                When I'm not coding, you'll find me either in the gym or
+                watching cartoons (big Steven Universe fan). I also play a few
+                video games in the MMO, MOBA, and fighting game genres and I'm
+                one of those PC master race guys. I like to do some traveling
+                too. With my father being in the Air Force, my family had did a
+                bit of traveling around the Pacific rim. Still a bunch of Europe
+                I would like to visit.
+              </p>
             </section>
           </div>
         </div>

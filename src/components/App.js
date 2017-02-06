@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation.js';
+import Footer from './Footer.js';
 import '../styles/App.scss';
 
 /**
@@ -21,6 +22,7 @@ class App extends Component {
       <div id="App">
         <Navigation />
         {this.props.children}
+        <Footer />
       </div>
     );
   }

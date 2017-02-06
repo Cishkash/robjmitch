@@ -1,7 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
 body
 {
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
 
     margin: 0;
     padding: 0;
+
+    .icon
+    {
+        display: inline-block;
+
+        width: 1rem;
+        height: 1rem;
+
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+    }
+
+    .icon-heart-style
+    {
+        fill: red;
+    }
 }
