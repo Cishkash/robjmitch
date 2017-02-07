@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import 'whatwg-fetch';
 
 import '../styles/Blog.scss';
@@ -18,7 +19,7 @@ class Blog extends Component {
    */
   constructor() {
     super();
-    this.state = { posts: null };
+    this.state = { blogs: null };
   }
   /**
    * Fetches all blog posts.
@@ -27,11 +28,11 @@ class Blog extends Component {
    * @return {undefined}
    */
   componentDidMount() {
-    fetch('http://localhost:3001/posts').then( posts => {
-      if (posts.status === 200) {
-        return posts.json();
+    fetch('http://localhost:3001/blogs').then( blogs => {
+      if (blogs.status === 200) {
+        return blogs.json();
       }
-    }).then(json => this.setState({posts: json})).catch( ex =>
+    }).then(json => this.setState({blogs: json})).catch( ex =>
       console.error('Failed to fetch blog posts', ex)
     );
   }
@@ -39,22 +40,26 @@ class Blog extends Component {
    * Rendering of the blog posts layout
    *
    * @event render()
-   * @return {Object}
+   * @return {HTML}
    */
   render() {
-    if (!this.state.posts) return null;
+    if (!this.state.blogs) return null;
 
     return (
-      <div id="Blog" className="container">
+      <div id="Blog" className="container mt-3">
         <div className="row justify-content-md-left">
           <div className="col-9">
-            {this.state.posts.map(post => (
-              <div className="media post-card" key={post.title}>
+            {this.state.blogs.map(blog => (
+              <div className="media post-card p-4" key={blog.id}>
                 <img className="d-flex align-self-start mr-3 rounded-circle"
-                     src={post.image} alt="Just up here thinkin" />
+                     src={blog.image} role="presentation" />
                 <div className="media-body">
-                  <h3 className="mt-0">{post.title}</h3>
-                  <p>{post.body}</p>
+                  <small className="text-muted">A blog by Robby Mitchell</small>
+                  <h3 className="mt-0">{blog.title}</h3>
+                  <p>{blog.body}</p>
+                  <div className="text-right">
+                    <Link to={`/post/${blog.id}`}>Read the rest</Link>
+                  </div>
                 </div>
               </div>
             ))}

@@ -11,7 +11,7 @@ class App extends Component {
    */
   render() {
     return (
-      <div id="Footer" className="container-fluid bg-inverse text-white">
+      <footer id="Footer" className="container-fluid bg-inverse text-white footer">
         <div className="row">
           <div className="container">
             <div className="row">
@@ -21,7 +21,7 @@ class App extends Component {
               </div>
               <aside className="col-3">
                 <small>
-                  Made with <a href="https://facebook.github.io/react/">React</a>.
+                  Constructed with <a href="https://facebook.github.io/react/">React</a>.
                 </small><br/>
                 <small>
                   Find this project on <a href="https://github.com/Cishkash/robjmitch">Github</a>.
@@ -30,7 +30,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </footer>
     );
   }
 }

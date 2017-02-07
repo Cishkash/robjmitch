@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import '../styles/Index.scss';
 
 class Index extends Component {
   render() {
     return (
       <div id="Index">
         <img src="/images/landing-image.jpg" className="img-fluid" role="presentation" />
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
-            <section className="about-me col-9">
+            <section className="col-9">
               <h2>Let's talk about me for a little bit</h2>
-              <p>
+              <p className="mt-4">
                 I'm a five year experienced front end web developer. You'll
                 typically find me working with Javascript, HTML, and CSS using
                 Ember or React JS frameworks, SASS as a CSS preprocessor, and a

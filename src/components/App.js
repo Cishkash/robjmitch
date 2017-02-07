@@ -21,7 +21,9 @@ class App extends Component {
     return (
       <div id="App">
         <Navigation />
-        {this.props.children}
+        <div className="app-outlet">
+          {this.props.children}
+        </div>
         <Footer />
       </div>
     );
