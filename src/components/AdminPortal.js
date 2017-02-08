@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 
 /**
  * The Admin component. Allows a user to log in to firebase to make or update
@@ -28,8 +29,13 @@ class AdminPortal extends Component {
    * @return {undefined}
    */
   authenticate() {
-    console.log("Logging into Firebase admin");
-    return;
+    fetch(`http://localhost:3001/admin/login?email=${this.state.email}&password=${this.state.password}`).then(
+      response => {
+        console.log('success', response);
+      }, (err) => {
+        console.error('Error logging in', err);
+      }
+    );
   }
   /**
    * Updates the value of the email or password state.
@@ -72,7 +78,7 @@ class AdminPortal extends Component {
                        value={this.state.password}
                        onChange={this.handleChange}/><br/>
               </div>
-              <button onClick={this.authenticate} type="button"
+              <button onClick={() => this.authenticate()} type="button"
                       className="btn btn-primary">
                 Sign in
               </button>
