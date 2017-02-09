@@ -5,6 +5,7 @@ import Index from './components/Index.js';
 import Blog from './components/Blog.js';
 import Post from './components/Post.js';
 import AdminPortal from './components/AdminPortal.js';
+import AdminPanel from './components/AdminPanel.js';
 import Resume from './components/Resume.js';
 
 /**
@@ -20,6 +21,7 @@ const Routes = (props) => (
       <Route path="/post/:postId" component={Post}/>
       <Route path="/resume" component={Resume}/>
       <Route path="/adminportal" component={AdminPortal}/>
+      <Route path="/adminpanel" component={AdminPanel}/>
     </Route>
   </Router>
 );

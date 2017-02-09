@@ -25,6 +25,14 @@ class AdminPortal extends Component {
       loading: false
     }
   }
+  componentWillMount() {
+    fetch(`${process.env.API_URL}/admin/currentuser`).then(
+      (response) => {
+        if (response.status !== 200) throw response;
+        this.props.router.push('/adminpanel');
+      }
+    );
+  }
   /**
    * Sends the authentication credentials to firebase to authenticate.
    *
@@ -43,10 +51,9 @@ class AdminPortal extends Component {
       response => {
         this.setState({ loading: false });
         if (response.status !== 200) throw response;
-        console.log('success', response);
         // This is where we would send our now authenticated user to the admin
         // panel.
-        // this.props.router.push('/');
+        this.props.router.push('/adminpanel');
       }
     ).catch( (err) => {
         this.setState({error: true});
@@ -60,7 +67,7 @@ class AdminPortal extends Component {
    * @param  {object} evt The event object when chaning the DOM
    * @return {undefined}
    */
-  handleChange = evt => {
+  handleChange = (evt) => {
     const target = evt.target;
     const name = target.name;
 

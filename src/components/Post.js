@@ -47,11 +47,11 @@ class Post extends Component {
     return (
       <div id="Post" className="container">
         <div className="row">
-          <div className="col-10 mt-3">
+          <article className="col-10 mt-3">
             <h2>{this.state.post.title}</h2>
             <small>A blog post by: {this.state.post.author}</small>
             <p className="mt-3">{this.state.post.body}</p>
-          </div>
+          </article>
         </div>
       </div>
     );
