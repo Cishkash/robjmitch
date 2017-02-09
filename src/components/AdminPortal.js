@@ -19,7 +19,8 @@ class AdminPortal extends Component {
     super();
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: false
     }
   }
   /**
@@ -29,11 +30,20 @@ class AdminPortal extends Component {
    * @return {undefined}
    */
   authenticate() {
-    fetch(`http://localhost:3001/admin/login?email=${this.state.email}&password=${this.state.password}`).then(
+    // Reset the error state
+    this.setState({ error: false });
+
+    // Make a request to authenticate with firebase.
+    fetch(`${process.env.API_URL}/admin/login?email=${this.state.email}&password=${this.state.password}`).then(
       response => {
+        if (response.status !== 200) throw response;
         console.log('success', response);
-      }, (err) => {
-        console.error('Error logging in', err);
+        // This is where we would send our now authenticated user to the admin
+        // panel.
+        // this.props.router.push('/');
+      }
+    ).catch( (err) => {
+        this.setState({error: true});
       }
     );
   }
@@ -59,11 +69,17 @@ class AdminPortal extends Component {
    * @event
    */
   render() {
+    const isError = this.state.error;
     return (
       <div id="Admin" className="container-fluid">
         <div className="row justify-content-center mt-3">
           <div className="col-3">
             <div className="card p-4 text-center">
+              {isError ? (
+                <small className="alert alert-danger" role="alert">
+                  Log in attempt failed
+                </small>
+              ) : null}
               <h5>Welcome to robjmitch admin</h5>
               <small>Guess I'm not good at hiding things...</small>
               <div className="card-block text-right">

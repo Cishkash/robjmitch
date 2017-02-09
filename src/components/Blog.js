@@ -28,7 +28,7 @@ class Blog extends Component {
    * @return {undefined}
    */
   componentDidMount() {
-    fetch('http://localhost:3001/blogs').then( blogs => {
+    fetch(`${process.env.API_URL}/blogs`).then( blogs => {
       if (blogs.status === 200) {
         return blogs.json();
       }

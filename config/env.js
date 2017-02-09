@@ -3,6 +3,16 @@
 
 var REACT_APP = /^REACT_APP_/i;
 
+// Configures the api url to hit dependent on the type of environment setup.
+function getApiUrl() {
+  if (process.env.NODE_ENV === 'production') {
+    // Haven't set up production yet.
+    return "'http://youmessedup:80'";
+  } else {
+    return "'http://localhost:3001'";
+  }
+}
+
 function getClientEnvironment(publicUrl) {
   var processEnv = Object
     .keys(process.env)
@@ -20,7 +30,9 @@ function getClientEnvironment(publicUrl) {
       // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
       // This should only be used as an escape hatch. Normally you would put
       // images into the `src` and `import` them in code to get their paths.
-      'PUBLIC_URL': JSON.stringify(publicUrl)
+      'PUBLIC_URL': JSON.stringify(publicUrl),
+      // Configurable API url variable for setting up back end requests.
+      'API_URL': getApiUrl()
     });
   return {'process.env': processEnv};
 }

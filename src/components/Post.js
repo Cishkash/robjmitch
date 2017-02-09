@@ -28,7 +28,7 @@ class Post extends Component {
    * @return {undefined}
    */
   componentDidMount() {
-    fetch('http://localhost:3001/post/' + this.props.params.postId).then( post => {
+    fetch(`${process.env.API_URL}/post/${this.props.params.postId}`).then( post => {
       if (post.status === 200) {
         return post.json();
       }

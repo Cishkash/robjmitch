@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 
+/**
+ * Index component. The IndexRoute of the application. Renders the "about me"
+ * portion of the app.
+ *
+ * @class Component.Index
+ * @extends React.Component
+ */
 class Index extends Component {
+  /**
+   * Renders the layout of the Index component. IndexRoute of the application.
+   *
+   * @event render
+   * @return {HTML}
+   */
   render() {
     return (
       <div id="Index">
