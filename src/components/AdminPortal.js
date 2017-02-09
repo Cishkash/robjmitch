@@ -25,6 +25,14 @@ class AdminPortal extends Component {
       loading: false
     }
   }
+  /**
+   * Adds a check for an authenticated user before they access this
+   * route. If unathenticated, the user is redirected to the `/adminpanel`
+   * route to access their admin controls.
+   *
+   * @event componentWillMount
+   * @returns {undefined}
+   */
   componentWillMount() {
     fetch(`${process.env.API_URL}/admin/currentuser`).then(
       (response) => {

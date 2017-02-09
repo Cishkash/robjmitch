@@ -103,11 +103,13 @@ class AdminPanel extends Component {
   logOut() {
     fetch(`${process.env.API_URL}/admin/logout`).then(
       (response) => {
-        this.props.router.push('/');
+        if (response.status === 200) {
+          this.props.router.push('/');
+        }
       }, (err) => {
-        console.error('There was an issue signing out', err);
+        console.warn('There was an issue logging the user out.', err);
       }
-    )
+    );
   }
   /**
    * Render method. Renders the layout of the AdminPanel component.
@@ -118,9 +120,9 @@ class AdminPanel extends Component {
   render() {
     return (
       <div id="AdminPanel" className="container">
-        <div className="row no-gutter">
+        <div className="row no-gutter my-4">
 
-          <div className="col-9 my-4">
+          <div className="col-9">
             <div className="card">
               <div className="card-header">
                 Blog description
@@ -152,11 +154,13 @@ class AdminPanel extends Component {
               <div className="card-header">
                 Admin Controls
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <a onClick={this.signOut}>Sign out</a>
-                </li>
-              </ul>
+              <div className="list-group">
+                <button type="button"
+                  className="list-group-item list-group-item-action"
+                  onClick={() => this.logOut()}>
+                  Sign out
+                </button>
+              </div>
             </div>
           </div>
         </div>
