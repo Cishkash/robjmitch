@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from './Loading.js';
 import 'whatwg-fetch';
 
 /**
@@ -20,7 +21,8 @@ class AdminPortal extends Component {
     this.state = {
       email: '',
       password: '',
-      error: false
+      error: false,
+      loading: false
     }
   }
   /**
@@ -31,11 +33,15 @@ class AdminPortal extends Component {
    */
   authenticate() {
     // Reset the error state
-    this.setState({ error: false });
+    this.setState({
+      error: false,
+      loading: true
+    });
 
     // Make a request to authenticate with firebase.
     fetch(`${process.env.API_URL}/admin/login?email=${this.state.email}&password=${this.state.password}`).then(
       response => {
+        this.setState({ loading: false });
         if (response.status !== 200) throw response;
         console.log('success', response);
         // This is where we would send our now authenticated user to the admin
@@ -59,6 +65,7 @@ class AdminPortal extends Component {
     const name = target.name;
 
     this.setState({
+      error: false,
       [name]: target.value
     });
   }
@@ -70,16 +77,12 @@ class AdminPortal extends Component {
    */
   render() {
     const isError = this.state.error;
+    const isLoading = this.state.loading;
     return (
       <div id="Admin" className="container-fluid">
         <div className="row justify-content-center mt-3">
           <div className="col-3">
             <div className="card p-4 text-center">
-              {isError ? (
-                <small className="alert alert-danger" role="alert">
-                  Log in attempt failed
-                </small>
-              ) : null}
               <h5>Welcome to robjmitch admin</h5>
               <small>Guess I'm not good at hiding things...</small>
               <div className="card-block text-right">
@@ -98,6 +101,19 @@ class AdminPortal extends Component {
                       className="btn btn-primary">
                 Sign in
               </button>
+
+              {/* Show an error if the request errors */}
+              {isError ? (
+                <small className="alert alert-danger mt-4" role="alert">
+                  Log in attempt failed
+                </small>
+              ) : null}
+              {/* Render a loading spinner when making a request */}
+              {isLoading ? (
+                <div className="mt-4">
+                  <Loading />
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
