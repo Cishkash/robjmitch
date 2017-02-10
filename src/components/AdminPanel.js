@@ -21,8 +21,10 @@ class AdminPanel extends Component {
   constructor() {
     super();
     this.state = {
-      blogTitle: '',
-      blogBody: ''
+      blogBody: '',
+      postAuthor: '',
+      postBody: '',
+      title: ''
     };
   }
   /**
@@ -74,7 +76,9 @@ class AdminPanel extends Component {
       },
       body: JSON.stringify({
         blogBody: this.state.blogBody,
-        blogTitle: this.state.blogTitle
+        postAuthor: this.state.postAuthor,
+        postBody: this.state.postBody,
+        title: this.state.title
       })
     };
 
@@ -123,20 +127,47 @@ class AdminPanel extends Component {
         <div className="row no-gutter my-4">
 
           <div className="col-9">
-            <div className="card">
+            <div className="card mb-3">
+              <div className="card-header">
+                Blog post title
+              </div>
+              <div className="card-block">
+                <input type="text" name="title"
+                  className="form-control"
+                  placeholder="Blog title"
+                  value={this.state.title}
+                  onChange={this.handleChange}/><br/>
+              </div>
+            </div>
+
+            <div className="card mb-3">
               <div className="card-header">
                 Blog description
               </div>
               <div className="card-block">
-                <input type="text" name="blogTitle"
-                  className="form-control"
-                  placeholder="Blog title"
-                  value={this.state.blogTitle}
-                  onChange={this.handleChange}/><br/>
                 <textarea type="text" name="blogBody"
                   className="form-control mb-3"
                   placeholder="Add a short blog body description"
                   value={this.state.blogBody}
+                  onChange={this.handleChange}><br />
+                </textarea>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-header">
+                Post description
+              </div>
+              <div className="card-block">
+                <input type="text" name="postAuthor"
+                  className="form-control"
+                  placeholder="Post author"
+                  value={this.state.postAuthor}
+                  onChange={this.handleChange}/><br />
+                <textarea type="text" name="postBody"
+                  className="form-control mb-3"
+                  placeholder="Add a post body"
+                  value={this.state.postBody}
                   onChange={this.handleChange}><br />
                 </textarea>
               </div>
@@ -147,6 +178,7 @@ class AdminPanel extends Component {
                 </button>
               </div>
             </div>
+
           </div>
 
           <div className="col-3">

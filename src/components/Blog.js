@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import 'whatwg-fetch';
+
+import BlogList from './BlogList.js';
 
 import '../styles/Blog.scss';
 
@@ -19,7 +20,7 @@ class Blog extends Component {
    */
   constructor() {
     super();
-    this.state = { blogs: null };
+    this.state = { blogs: {} };
   }
   /**
    * Fetches all blog posts.
@@ -49,20 +50,7 @@ class Blog extends Component {
       <div id="Blog" className="container mt-3">
         <div className="row justify-content-md-left">
           <div className="col-9">
-            {this.state.blogs.map(blog => (
-              <div className="media post-card p-4" key={blog.id}>
-                <img className="d-flex align-self-start mr-3 rounded-circle"
-                     src={blog.image} role="presentation" />
-                <div className="media-body">
-                  <small className="text-muted">A blog by Robby Mitchell</small>
-                  <h3 className="mt-0">{blog.title}</h3>
-                  <p>{blog.body}</p>
-                  <div className="text-right">
-                    <Link to={`/post/${blog.id}`}>Read the rest</Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <BlogList blogs={this.state.blogs}/>
           </div>
           <div className="col-3">
             <div className="sidebar"> </div>
