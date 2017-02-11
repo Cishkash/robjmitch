@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 class BlogList extends Component {
+  /**
+   * Iterates then maps the layout of all blog posts within firebase
+   *
+   * @method iterateBlogs
+   * @returns {HTML}
+   */
   iterateBlogs(blogs) {
     let blogArr = [];
     for (let blog in blogs) {
@@ -11,7 +17,7 @@ class BlogList extends Component {
     }
 
     return blogArr.map( (blog) => (
-      <div className="media post-card p-4" key={blog}>
+      <article className="media post-card p-4 my-3 rounded" key={blog}>
         <img className="d-flex align-self-start mr-3 rounded-circle"
           src={blogs[blog].image} role="presentation" />
         <div className="media-body">
@@ -22,7 +28,7 @@ class BlogList extends Component {
             <Link to={`/post/${blog}`}>Read the rest</Link>
           </div>
         </div>
-      </div>
+      </article>
     ));
   }
 
