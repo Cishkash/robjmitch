@@ -32,9 +32,12 @@ class Blog extends Component {
     fetch(`${process.env.API_URL}/blogs`).then( blogs => {
       if (blogs.status === 200) {
         return blogs.json();
+      } else {
+        throw new Error(blogs.json());
       }
-    }).then(json => this.setState({blogs: json})).catch( ex =>
-      console.error('Failed to fetch blog posts', ex)
+    })
+      .then( (json) => this.setState({blogs: json}))
+      .catch( (err) => console.warn(err)
     );
   }
   /**

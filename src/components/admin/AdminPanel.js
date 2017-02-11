@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
-import '../styles/AdminPanel.scss';
+import '../../styles/AdminPanel.scss';
 
 /**
  * Admin panel component allows a user to post to the blog and sign out
@@ -55,7 +55,7 @@ class AdminPanel extends Component {
         return;
       }
     ).catch( (err) => {
-      this.props.router.push('/adminportal');
+      this.props.router.push('/admin');
     });
   }
   /**

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loading from './Loading.js';
+import Loading from '../Loading.js';
 import 'whatwg-fetch';
 
 /**
@@ -37,7 +37,7 @@ class AdminPortal extends Component {
     fetch(`${process.env.API_URL}/admin/currentuser`).then(
       (response) => {
         if (response.status !== 200) throw response;
-        this.props.router.push('/adminpanel');
+        this.props.router.push('/admin/adminpanel');
       }
     );
   }
@@ -61,7 +61,7 @@ class AdminPortal extends Component {
         if (response.status !== 200) throw response;
         // This is where we would send our now authenticated user to the admin
         // panel.
-        this.props.router.push('/adminpanel');
+        this.props.router.push('admin/adminpanel');
       }
     ).catch( (err) => {
         this.setState({error: true});
@@ -84,6 +84,11 @@ class AdminPortal extends Component {
       [name]: target.value
     });
   }
+  handleKeyPress = (evt) => {
+    if (evt.charCode === 13) {
+      this.authenticate();
+    }
+  }
   /**
    * Render method. Renders the layout of the Admin component.
    *
@@ -105,12 +110,14 @@ class AdminPortal extends Component {
                        className="form-control"
                        placeholder="Email address"
                        value={this.state.email}
-                       onChange={this.handleChange}/><br/>
+                       onChange={this.handleChange}
+                       onKeyPress={this.handleKeyPress}/><br/>
                 <input type="password" name="password"
                        className="form-control"
                        placeholder="Password"
                        value={this.state.password}
-                       onChange={this.handleChange}/><br/>
+                       onChange={this.handleChange}
+                       onKeyPress={this.handleKeyPress}/><br/>
               </div>
               <button onClick={() => this.authenticate()} type="button"
                       className="btn btn-primary">
