@@ -87,7 +87,10 @@ class AdminPanel extends Component {
             })
           };
 
-    if (!blogBody || !postAuthor || !postBody || !title) this.setState({ error: true });
+    if (!blogBody || !postAuthor || !postBody || !title) {
+      this.setState({ error: true });
+      return null;
+    }
 
     fetch(`${process.env.API_URL}/admin/addblog`, options).then(
       (response) => {
