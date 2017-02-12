@@ -22,6 +22,7 @@ class AdminPanel extends Component {
     super();
     this.state = {
       blogBody: '',
+      error: null,
       postAuthor: '',
       postBody: '',
       title: ''
@@ -69,18 +70,24 @@ class AdminPanel extends Component {
    * @returns {undefined}
    */
   submitBlog() {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        blogBody: this.state.blogBody,
-        postAuthor: this.state.postAuthor,
-        postBody: this.state.postBody,
-        title: this.state.title
-      })
-    };
+    const blogBody = this.state.blogBody,
+          postAuthor = this.state.postAuthor,
+          postBody = this.state.postBody,
+          title = this.state.title,
+          options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              blogBody: blogBody,
+              postAuthor: postAuthor,
+              postBody: postBody,
+              title: title
+            })
+          };
+
+    if (!blogBody || !postAuthor || !postBody || !title) this.setState({ error: true });
 
     fetch(`${process.env.API_URL}/admin/addblog`, options).then(
       (response) => {
@@ -122,6 +129,7 @@ class AdminPanel extends Component {
    * @return {HTML}
    */
   render() {
+    let isError = this.state.error;
     return (
       <div id="AdminPanel" className="container">
         <div className="row no-gutter my-4">
@@ -179,6 +187,12 @@ class AdminPanel extends Component {
               </div>
             </div>
 
+            {isError ? (
+              <small className="alert alert-danger d-flex mt-3" role="alert">
+                You are missing required fields
+              </small>
+            ) : null}
+
           </div>
 
           <div className="col-3">
@@ -187,6 +201,7 @@ class AdminPanel extends Component {
                 Admin Controls
               </div>
               <div className="list-group">
+
                 <button type="button"
                   className="list-group-item list-group-item-action"
                   onClick={() => this.logOut()}>

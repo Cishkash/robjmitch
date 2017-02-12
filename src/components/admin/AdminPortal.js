@@ -36,10 +36,17 @@ class AdminPortal extends Component {
   componentWillMount() {
     fetch(`${process.env.API_URL}/admin/currentuser`).then(
       (response) => {
-        if (response.status !== 200) throw response;
-        this.props.router.push('/admin/adminpanel');
+        if ( response.status === 200 ) {
+          this.props.router.push('/admin/adminpanel');
+        } else if ( response.status === 404 ) {
+          console.warn('User not found');
+        } else {
+          throw response;
+        }
       }
-    );
+    ).catch( (err) => {
+      console.warn(err);
+    });
   }
   /**
    * Sends the authentication credentials to firebase to authenticate.
@@ -48,6 +55,17 @@ class AdminPortal extends Component {
    * @return {undefined}
    */
   authenticate() {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      })
+    };
+
     // Reset the error state
     this.setState({
       error: false,
@@ -55,7 +73,7 @@ class AdminPortal extends Component {
     });
 
     // Make a request to authenticate with firebase.
-    fetch(`${process.env.API_URL}/admin/login?email=${this.state.email}&password=${this.state.password}`).then(
+    fetch(`${process.env.API_URL}/admin/login`, options).then(
       response => {
         this.setState({ loading: false });
         if (response.status !== 200) throw response;
