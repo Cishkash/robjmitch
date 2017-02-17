@@ -13,14 +13,17 @@ import '../styles/Blog.scss';
  */
 class Blog extends Component {
   /**
-   * Constructor for initializing posts state.
+   * Constructor for initializing blogs state.
    *
    * @event constructor
    * @return {undefined}
    */
   constructor() {
     super();
-    this.state = { blogs: {} };
+    this.state = {
+      blogs: {},
+      error: false
+    };
   }
   /**
    * Fetches all blog posts.
@@ -29,6 +32,9 @@ class Blog extends Component {
    * @return {undefined}
    */
   componentDidMount() {
+    // Reset the error state before fetching
+    this.setState({ error: false });
+
     fetch(`${process.env.API_URL}/blogs`).then( blogs => {
       if (blogs.status === 200) {
         return blogs.json();
@@ -37,7 +43,10 @@ class Blog extends Component {
       }
     })
       .then( (json) => this.setState({blogs: json}))
-      .catch( (err) => console.warn(err)
+      .catch( (err) => {
+        console.warn(err)
+        this.setState({ error: true });
+      }
     );
   }
   /**
@@ -53,7 +62,11 @@ class Blog extends Component {
       <div id="Blog" className="container mt-3">
         <div className="row justify-content-md-left">
           <div className="col-9">
-            <BlogList blogs={this.state.blogs}/>
+            {this.state.error ? (
+              <div className="alert alert-info" role="alert">
+                <strong>Oh no!</strong> There doesn't appear to be anything here.
+              </div>
+            ) : ( <BlogList blogs={this.state.blogs}/> )}
           </div>
           <div className="col-3">
             <div className="sidebar"> </div>

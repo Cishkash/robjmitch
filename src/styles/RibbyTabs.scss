@@ -1,0 +1,19 @@
+#RibbyTabs
+{
+    .btn-custom-tab
+    {
+        line-height: 1.5rem;
+
+        transition: border-bottom .1s;
+
+        color: #5cb85c;
+        border: 0;
+        border-bottom: 3px solid #5cb85c;
+        background: transparent;
+
+        &:hover
+        {
+            border-bottom: 4px solid #3a963a;
+        }
+    }
+}
