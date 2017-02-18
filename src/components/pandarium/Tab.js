@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 /**
  * The Tab class. When nested from the `RibbyTabs` component, will handle
  * display state of the current active tab.
@@ -23,41 +22,6 @@ class Tab extends Component {
     }
   }
   /**
-   * Handles the initial evaluation of the active tab against the default tab.
-   *
-   * @event componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.evaluateTabs(this.props.activeTab, this.props.defaultTab)
-  }
-  /**
-   * Handles calling the evaluateTabs on new properties passed into the
-   * component.
-   *
-   * @event componentWillReceiveProps
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProp) {
-    this.evaluateTabs(this.props.activeTab, nextProp.activeTab);
-  }
-  /**
-   * Evaluates the tabs between default/updated properties passed into the
-   * component.
-   *
-   * @method evaluateTabs
-   * @param {String} currentProp The current property passed set or initially
-   *                             passed into the component.
-   * @param {String} nextProp    The property our currentProp evaluates against
-   */
-  evaluateTabs(currentProp, nextProp) {
-    if (currentProp === nextProp) {
-      this.setState({ showTab: true });
-    } else {
-      this.setState({ showTab: false });
-    }
-  }
-  /**
    * Responsible for creating the id of the container component.
    *
    * @param  {String} name The tabName property passed into the component
@@ -77,7 +41,7 @@ class Tab extends Component {
     if (!this.props.activeTab) return null;
     return (
       <div id={this.generateTabId(this.props.tabName)}
-        className={this.state.showTab ? 'show' : 'hidden-sm-up'}>
+        className={this.props.activeTab === this.props.tabName ? 'show' : 'hidden-sm-up'}>
         {this.props.children}
       </div>
     )

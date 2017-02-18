@@ -5,8 +5,35 @@ import '../../styles/RibbyTabs.scss';
 const { Children, cloneElement } = React;
 
 /**
- * Tabbing component to handle tab state among child tabs.
+ * Pretty slick lightweight tabbing component to handle state between child `Tab`
+ * components
  *
+ * A RibbyTabs™ can be setup easily by passing in an iterable array of objects
+ * with tabId's like:
+ * ```
+ * tabList: [{tabId: 'thisName'}, {tabId: 'thatName'}];
+ * ```
+ * as the tabList:
+ * ```
+ * <RibbyTabs tabList={tabList}>
+ * -or-
+ * <RibbyTabs tabList={tabList} defaultTab="thisName"> // To specify a default open tab
+ * ```
+ *
+ * Then use the Tab component with your tabId names to handle the content nested
+ * inside of the `RibbyTabs` component:
+ * ```
+ * let tabList = [{tabId: 'thisName'}, {tabId: 'thatName'}];
+ * <RibbyTabs tabList={tabList} defaultTab="thisName">
+ *   <Tab tabName="thisName">
+ *     This is this content
+ *   </Tab>
+ *   <Tab tabName="thatName">
+ *     This is that content
+ *   </Tab>
+ * </RibbyTabs>
+ * ```
+ * @author Robby Mitchell
  * @class Component.RibbyTabs
  * @extends React.Component
  */
@@ -54,10 +81,10 @@ class RibbyTabs extends Component {
           (tab) => {
             return (
               <button
-                className="btn-custom-tab mr-3 mb-3 py-2 px-3"
+                className="btn-custom-tab mr-3 mb-3 py-1 px-2"
                 key={tab.tabId}
                 value={tab.tabId}
-                onMouseUp={this.handleTab}>
+                onMouseDown={this.handleTab}>
                 {tab.tabId}
               </button>
             )

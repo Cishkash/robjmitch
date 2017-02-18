@@ -4,6 +4,7 @@ import 'whatwg-fetch';
 import RibbyTabs from '../pandarium/RibbyTabs.js';
 import Tab from '../pandarium/Tab.js';
 import AddBlogPost from './panel/AddBlogPost.js';
+import DeleteBlogPost from './panel/DeleteBlogPost.js';
 
 import '../../styles/AdminPanel.scss';
 
@@ -40,24 +41,17 @@ class AdminPanel extends Component {
    * @return {HTML}
    */
   render() {
-    let tabList = [
-      {
-        tabId: 'AddBlogPost',
-      }, {
-        tabId: 'DeleteBlogPost'
-      }
-    ];
     if (!this.props) return null;
     return (
       <div id="AdminPanel" className="container">
         <div className="row no-gutter my-4">
           <div className="col-9">
-            <RibbyTabs tabList={tabList} defaultTab="AddBlogPost">
+            <RibbyTabs tabList={this.props.tabList} defaultTab="AddBlogPost">
               <Tab tabName="AddBlogPost">
                 <AddBlogPost />
               </Tab>
               <Tab tabName="DeleteBlogPost">
-                {/* <DeleteBlogPost /> */}
+                <DeleteBlogPost />
               </Tab>
             </RibbyTabs>
           </div>
@@ -81,6 +75,18 @@ class AdminPanel extends Component {
       </div>
     );
   }
+}
+
+// Sets default props on the component. I'm simply supplying the tabList as a
+// property to move it outside of my render component here.
+AdminPanel.defaultProps = {
+  tabList: [
+    {
+      tabId: 'AddBlogPost',
+    }, {
+      tabId: 'DeleteBlogPost'
+    }
+  ]
 }
 
 export default AdminPanel;
