@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+/**
+ * AddBlogPost component. A series of input boxes that can be submitted to
+ * create new blog posts.
+ *
+ * An `AddBlogPost` component can be set up like:
+ * ```
+ * <AddBlogPost />
+ * ```
+ * Typically would want to send a closure method to refetch `/blogs` to stay
+ * current with your new input as I did from the parent `AdminPanel` component:
+ * ```
+ * <AddBlogPost fetchBlogs={this.fetchBlogs}/>
+ * ```
+ *
+ * @class Component.AddBlogPost
+ * @extends React.Component
+ */
 class AddBlogPost extends Component {
-
+  /**
+   * Constructor for the AddBlogPost component. Sets initial state.
+   *
+   * @event constructor
+   * @constructor
+   * @returns {undefined}
+   */
   constructor() {
     super();
     this.state = {
@@ -15,12 +38,12 @@ class AddBlogPost extends Component {
     }
   }
   /**
-  * Handles setting of the state of all inputs on their respective spot in the
-  * state object.
-  *
-  * @param  {String} evt The value of the input
-  * @return {undefined}
-  */
+   * Handles setting of the state of all inputs on their respective spot in the
+   * state object.
+   *
+   * @param  {String} evt The value of the input
+   * @return {undefined}
+   */
   handleChange = (evt) => {
     const target = evt.target;
     const name = target.name;
@@ -93,11 +116,18 @@ class AddBlogPost extends Component {
           postBody: '',
           title: ''
         });
+        this.props.fetchBlogs();
       }, (err) => {
         this.setState({ error: err });
       }
     );
   }
+  /**
+   * Renders the layout of the `AddBlogPost` component.
+   *
+   * @event render
+   * @returns {HTML}
+   */
   render() {
     let isError = this.state.error;
     return (

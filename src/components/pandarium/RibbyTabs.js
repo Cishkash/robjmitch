@@ -13,14 +13,16 @@ const { Children, cloneElement } = React;
  * ```
  * tabList: [{tabId: 'thisName'}, {tabId: 'thatName'}];
  * ```
- * as the tabList:
+ * as a `tabList` props:
  * ```
  * <RibbyTabs tabList={tabList}>
- * -or-
- * <RibbyTabs tabList={tabList} defaultTab="thisName"> // To specify a default open tab
+ * ```
+ * -or- to specify a default open tab upon tab render:
+ * ```
+ * <RibbyTabs tabList={tabList} defaultTab="thisName">
  * ```
  *
- * Then use the Tab component with your tabId names to handle the content nested
+ * Then use the `Tab` component with your `tabId` names to handle the content nested
  * inside of the `RibbyTabs` component:
  * ```
  * let tabList = [{tabId: 'thisName'}, {tabId: 'thatName'}];
@@ -33,6 +35,7 @@ const { Children, cloneElement } = React;
  *   </Tab>
  * </RibbyTabs>
  * ```
+ * 
  * @author Robby Mitchell
  * @class Component.RibbyTabs
  * @extends React.Component

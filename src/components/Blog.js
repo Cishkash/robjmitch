@@ -3,8 +3,6 @@ import 'whatwg-fetch';
 
 import BlogList from './BlogList.js';
 
-import '../styles/Blog.scss';
-
 /**
  * The blog component. Renders the blog section from the app component.
  *
