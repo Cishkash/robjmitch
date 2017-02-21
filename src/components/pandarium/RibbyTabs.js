@@ -35,7 +35,10 @@ const { Children, cloneElement } = React;
  *   </Tab>
  * </RibbyTabs>
  * ```
- * 
+ *
+ * @TODO Add tab name property.
+ * @TODO Add accessibility.
+ *
  * @author Robby Mitchell
  * @class Component.RibbyTabs
  * @extends React.Component
