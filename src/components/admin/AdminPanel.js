@@ -5,6 +5,7 @@ import RibbyTabs from '../pandarium/RibbyTabs.js';
 import Tab from '../pandarium/Tab.js';
 import AddBlogPost from './panel/AddBlogPost.js';
 import DeleteBlogPost from './panel/DeleteBlogPost.js';
+import AddInterests from './panel/AddInterests.js';
 
 import '../../styles/AdminPanel.scss';
 
@@ -105,12 +106,15 @@ class AdminPanel extends Component {
           <div className="col-9">
             <RibbyTabs tabList={this.props.tabList} defaultTab="AddBlogPost">
               <Tab tabName="AddBlogPost">
-                <AddBlogPost fetchBlogs={this.fetchBlogs}/>
+                <AddBlogPost update={this.fetchBlogs}/>
               </Tab>
               <Tab tabName="DeleteBlogPost">
                 <DeleteBlogPost
                   fetchBlogs={this.fetchBlogs}
                   blogs={this.state.blogs}/>
+              </Tab>
+              <Tab tabName="AddInterests">
+                <AddInterests />
               </Tab>
             </RibbyTabs>
           </div>
@@ -121,7 +125,6 @@ class AdminPanel extends Component {
                 Admin Controls
               </div>
               <div className="list-group">
-
                 <button type="button"
                   className="list-group-item list-group-item-action"
                   onClick={() => this.logOut()}>
@@ -141,9 +144,11 @@ class AdminPanel extends Component {
 AdminPanel.defaultProps = {
   tabList: [
     {
-      tabId: 'AddBlogPost',
+      tabId: 'AddBlogPost'
     }, {
       tabId: 'DeleteBlogPost'
+    }, {
+      tabId: 'AddInterests'
     }
   ]
 }

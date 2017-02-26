@@ -9,10 +9,10 @@ import 'whatwg-fetch';
  * ```
  * <AddBlogPost />
  * ```
- * Typically would want to send a closure method to refetch `/blogs` to stay
- * current with your new input as I did from the parent `AdminPanel` component:
+ * Typically would want to send a closure method to update something to stay
+ * current with your new input(s) as I did from the parent `AdminPanel` component:
  * ```
- * <AddBlogPost fetchBlogs={this.fetchBlogs}/>
+ * <AddBlogPost update={this.fetchBlogs}/>
  * ```
  *
  * @class Component.AddBlogPost
@@ -116,7 +116,9 @@ class AddBlogPost extends Component {
           postBody: '',
           title: ''
         });
-        this.props.fetchBlogs();
+        if (typeof this.props.update === 'function') {
+          this.props.update();
+        }
       }, (err) => {
         this.setState({ error: err });
       }

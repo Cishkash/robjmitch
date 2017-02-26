@@ -29,7 +29,7 @@ class BlogList extends Component {
    * @returns {HTML}
    */
   iterateBlogs(blogs) {
-    let blogArr = [];
+    const blogArr = [];
     for (let blog in blogs) {
       if (blog) {
         blogArr.push(blog);
