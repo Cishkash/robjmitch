@@ -41,7 +41,7 @@ class AddBlogPost extends Component {
    * Handles setting of the state of all inputs on their respective spot in the
    * state object.
    *
-   * @param  {String} evt The value of the input
+   * @param  {Object} evt The event object of the modified element
    * @return {undefined}
    */
   handleChange = (evt) => {

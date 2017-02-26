@@ -90,7 +90,7 @@ class AdminPortal extends Component {
    * Updates the value of the email or password state.
    *
    * @method handleChange
-   * @param  {object} evt The event object when chaning the DOM
+   * @param  {Object} evt The event object of the modified element
    * @return {undefined}
    */
   handleChange = (evt) => {
