@@ -5,7 +5,7 @@ import RibbyTabs from '../pandarium/RibbyTabs.js';
 import Tab from '../pandarium/Tab.js';
 import AddBlogPost from './panel/AddBlogPost.js';
 import DeleteBlogPost from './panel/DeleteBlogPost.js';
-import AddInterests from './panel/AddInterests.js';
+import AddArticle from './panel/AddArticle.js';
 
 import '../../styles/AdminPanel.scss';
 
@@ -113,8 +113,8 @@ class AdminPanel extends Component {
                   fetchBlogs={this.fetchBlogs}
                   blogs={this.state.blogs}/>
               </Tab>
-              <Tab tabName="AddInterests">
-                <AddInterests />
+              <Tab tabName="AddArticle">
+                <AddArticle />
               </Tab>
             </RibbyTabs>
           </div>
@@ -148,7 +148,7 @@ AdminPanel.defaultProps = {
     }, {
       tabId: 'DeleteBlogPost'
     }, {
-      tabId: 'AddInterests'
+      tabId: 'AddArticle'
     }
   ]
 }

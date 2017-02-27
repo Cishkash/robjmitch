@@ -54,6 +54,8 @@ class DeleteBlogPost extends Component {
   /**
    * Render method. Renders the layout of the DeleteBlogPost component.
    *
+   * @TODO Needs interstitial confirmation of deletion modal.
+   *
    * @method render
    * @event
    */

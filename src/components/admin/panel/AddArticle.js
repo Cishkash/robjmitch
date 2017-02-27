@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 
 /**
  * AddInterests class for adding interesting articles found on the web.
@@ -6,7 +7,7 @@ import React, { Component } from 'react';
  * @class Component.AddInterests
  * @extends React.Component
  */
-class AddInterests extends Component {
+class AddArticle extends Component {
   /**
    * Constructor for the `AddInterests` route. Sets initial state.
    *
@@ -19,6 +20,39 @@ class AddInterests extends Component {
     this.state = {
       articleLink: '',
       articleTitle: ''
+    }
+  }
+  addArticle() {
+    const regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+
+    if (regex.test(this.state.articleLink)) {
+      const options = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                articleLink: this.state.articleLink,
+                articleTitle: this.state.articleTitle
+              })
+            };
+
+      fetch(`${process.env.API_URL}/addArticle`, options).then(
+        (response) => {
+          return null;
+        }
+      )
+    } else {
+      this.setState({
+        validError: true
+      });
+
+      setTimeout( () => {
+        this.setState({
+          validError: false
+        })
+      }, 3000);
+
     }
   }
   /**
@@ -55,14 +89,18 @@ class AddInterests extends Component {
             value={this.state.articleTitle}
             onChange={this.handleChange}/><br/>
           <input type="text" name="articleLink"
-            className="form-control"
+            className={`form-control ${this.state.validError ? 'error-ease' : ''}`}
             placeholder="Article link"
             value={this.state.articleLink}
             onChange={this.handleChange}/>
+          <button onClick={() => this.addArticle()} type="submit"
+                  className="btn btn-primary">
+            Add
+          </button>
         </div>
       </article>
     );
   }
 }
 
-export default AddInterests;
+export default AddArticle;

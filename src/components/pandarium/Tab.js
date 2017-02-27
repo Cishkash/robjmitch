@@ -22,7 +22,8 @@ class Tab extends Component {
     }
   }
   /**
-   * Responsible for creating the id of the container component.
+   * Responsible for creating the unique id of the container component. Useful
+   * for styling standards on a component based nested style.
    *
    * @param  {String} name The tabName property passed into the component
    * @return {String}
@@ -33,6 +34,9 @@ class Tab extends Component {
   /**
    * The render event of the component. Renders the layout of the `Tab`
    * component.
+   *
+   * @TODO Needs to be unhitched from bootstrap `show/hidden-sm-up`. Possibly
+   *       affected by the style `display` property instead.
    *
    * @event render
    * @returns {HTML}
