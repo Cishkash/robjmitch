@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+import ArticleList from './ArticleList.js';
 import BlogList from './BlogList.js';
 
 /**
@@ -66,9 +67,11 @@ class Blog extends Component {
               </div>
             ) : ( <BlogList blogs={this.state.blogs}/> )}
           </div>
-          <div className="col-3">
-            <div className="sidebar"> </div>
-          </div>
+          <aside className="col-3">
+            <div className="sidebar">
+              <ArticleList />
+            </div>
+          </aside>
         </div>
       </div>
     );

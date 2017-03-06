@@ -19,9 +19,16 @@ class AddArticle extends Component {
     super();
     this.state = {
       articleLink: '',
+      articlePosted: '',
       articleTitle: ''
     }
   }
+  /**
+   * Adds an article to Firebase.
+   *
+   * @method addArticle
+   * @returns {undefined}
+   */
   addArticle() {
     const regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 
@@ -39,20 +46,34 @@ class AddArticle extends Component {
 
       fetch(`${process.env.API_URL}/addArticle`, options).then(
         (response) => {
+          // Set the state for successfully posting an article
+          this.setState({
+            articleLink: '',
+            articlePosted: true,
+            articleTitle: ''
+          });
+
+          // Reset the resolved feedback
+          setTimeout( () => {
+            this.setState({
+              articlePosted: ''
+            });
+          }, 3000);
           return null;
         }
       )
     } else {
+      // Toggles a validation error when regex doesn't match.
       this.setState({
         validError: true
       });
 
+      // Reset any validation error announcements
       setTimeout( () => {
         this.setState({
           validError: false
         })
       }, 3000);
-
     }
   }
   /**
@@ -93,8 +114,15 @@ class AddArticle extends Component {
             placeholder="Article link"
             value={this.state.articleLink}
             onChange={this.handleChange}/>
+        </div>
+        <div className="card-footer text-right">
+          {this.state.articlePosted ? (
+            <small className="alert alert-success mr-3" role="alert">
+              Article successfully posted!
+            </small>
+          ) : null}
           <button onClick={() => this.addArticle()} type="submit"
-                  className="btn btn-primary">
+            className="btn btn-primary">
             Add
           </button>
         </div>

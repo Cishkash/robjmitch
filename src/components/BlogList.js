@@ -46,6 +46,8 @@ class BlogList extends Component {
           <p>{blogs[blog].body}</p>
           <div className="row justify-content-end">
             <div className="col text-right">
+              {/* I really need to change this method name once I implement
+                  the ability to update blog posts */}
               {this.props.onClick ? (
                 <button type="button"
                   className="btn btn-danger btn-sm d-inline-flex mr-3"
