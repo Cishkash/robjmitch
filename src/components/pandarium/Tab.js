@@ -35,8 +35,14 @@ class Tab extends Component {
    * The render event of the component. Renders the layout of the `Tab`
    * component.
    *
+   * @NOTE All tabs are rendered and hidden from view if not the active tab.
+   *       This was intentional so we retain the user's input when they type
+   *       some input on one tab and if they were to switch tabs and return,
+   *       everything would be as it was.
+   *
    * @TODO Needs to be unhitched from bootstrap `show/hidden-sm-up`. Possibly
-   *       affected by the style `display` property instead.
+   *       affected by the style `display` property instead or included with
+   *       the base css file for the stripped module.
    *
    * @event render
    * @returns {HTML}

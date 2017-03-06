@@ -77,7 +77,11 @@ class ArticleList extends Component {
     }
 
     return articleList.map( (article) => (
-      <a href={articles[article].articleLink} key={article}>{articles[article].title}</a>
+      <a href={articles[article].articleLink}
+         className="list-group-item list-group-item-action"
+         key={article}>
+         {articles[article].title}
+      </a>
     ));
   }
   /**
@@ -91,8 +95,10 @@ class ArticleList extends Component {
 
     return (
       <div id="ArticleList" className="my-3">
-        <strong>Interesting articles:</strong>
-        <div className="articles">
+        <div class="list-group">
+          <strong className="list-group-item list-group-item-info">
+            Interesting articles:
+          </strong>
           {this.iterateArticles(this.state.articles)}
         </div>
       </div>

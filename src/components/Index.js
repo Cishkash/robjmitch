@@ -36,17 +36,15 @@ class Index extends Component {
                 developer, I am open to developing on the back end using NodeJS.
                 I have connected to public APIs like Vimeo and League of Legends
                 to create small applications, one of which I used in a
-                competition (the other was just for fun) and have experience
-                connecting to firebase to serve up some nosql data.
+                competition (the other was just for fun) and even have
+                experience connecting to firebase to serve up some nosql data.
               </p>
               <p>
                 When I'm not coding, you'll find me either in the gym or
                 watching cartoons (big Steven Universe fan). I also play a few
                 video games in the MMO, MOBA, and fighting game genres and I'm
-                one of those PC master race guys. I like to do some traveling
-                too. With my father being in the Air Force, my family had did a
-                bit of traveling around the Pacific rim. Still a bunch of Europe
-                I would like to visit.
+                one of those "PC master race" guys. I like to travel too! A bit
+                of a mixed bag of hobbies.
               </p>
             </section>
           </div>
