@@ -36,7 +36,6 @@ const { Children, cloneElement } = React;
  * </RibbyTabs>
  * ```
  *
- * @TODO Add tab name property to the `tabList` object for custom tab naming.
  * @TODO Add accessibility.
  *
  * @author Robby Mitchell
@@ -59,9 +58,6 @@ class RibbyTabs extends Component {
   }
   /**
    * Handles the setting of the activeTab state to the selected button value
-   *
-   * @TODO Resolve the double click issue that's occurring when selecting a
-   *       different tab option.
    *
    * @param  {Object} evt The event object of the `onMouseUp` event on button
    *                      select.
@@ -91,7 +87,7 @@ class RibbyTabs extends Component {
                 key={tab.tabId}
                 value={tab.tabId}
                 onMouseDown={this.handleTab}>
-                {tab.tabId}
+                {tab.displayName}
               </button>
             )
           }

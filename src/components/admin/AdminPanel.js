@@ -119,20 +119,18 @@ class AdminPanel extends Component {
             </RibbyTabs>
           </div>
 
-          <div className="col-3">
-            <div className="card">
-              <div className="card-header">
+          <aside className="col-3">
+            <div className="list-group">
+              <div className="list-group-item list-group-item-info">
                 Admin Controls
               </div>
-              <div className="list-group">
-                <button type="button"
-                  className="list-group-item list-group-item-action"
-                  onClick={() => this.logOut()}>
-                  Sign out
-                </button>
-              </div>
+              <a className="list-group-item list-group-item-action"
+                 onClick={() => this.logOut()}
+                 href="#">
+                 Sign out
+              </a>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     );
@@ -144,11 +142,14 @@ class AdminPanel extends Component {
 AdminPanel.defaultProps = {
   tabList: [
     {
-      tabId: 'AddBlogPost'
+      tabId: 'AddBlogPost',
+      displayName: 'Add a blog post'
     }, {
-      tabId: 'DeleteBlogPost'
+      tabId: 'DeleteBlogPost',
+      displayName: 'Delete a blog'
     }, {
-      tabId: 'AddArticle'
+      tabId: 'AddArticle',
+      displayName: 'Add an article'
     }
   ]
 }
