@@ -6,8 +6,7 @@ var REACT_APP = /^REACT_APP_/i;
 // Configures the api url to hit dependent on the type of environment setup.
 function getApiUrl() {
   if (process.env.NODE_ENV === 'production') {
-    // Haven't set up production yet.
-    return "'http://youmessedup:80'";
+    return "'http://robjmitch.com:80'";
   } else {
     return "'http://localhost:3001'";
   }
