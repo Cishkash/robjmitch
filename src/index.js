@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from './Routes.js';
-
 import { browserHistory } from 'react-router';
 
+// Import routes
+import Routes from './Routes.js';
+
+// Import styles
 import 'bootstrap/scss/bootstrap.scss';
 import './styles/Base.scss';
 

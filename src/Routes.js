@@ -1,5 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router'
+
+// Import the route components
 import App from './components/App.js';
 import Index from './components/Index.js';
 import Blog from './components/Blog.js';

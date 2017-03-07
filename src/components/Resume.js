@@ -14,7 +14,7 @@ class Resume extends Component {
    *       cleaner.
    *
    * @event render
-   * @return {String.html}
+   * @return {HTML}
    */
   render() {
     return (

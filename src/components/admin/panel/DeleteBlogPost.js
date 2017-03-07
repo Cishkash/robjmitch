@@ -56,8 +56,8 @@ class DeleteBlogPost extends Component {
    *
    * @TODO Needs interstitial confirmation of deletion modal.
    *
-   * @method render
-   * @event
+   * @event render
+   * @returns {HTML}
    */
   render() {
     if (!this.props.blogs) return null;

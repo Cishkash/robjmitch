@@ -6,8 +6,8 @@ class App extends Component {
   /**
    * Render method. Renders the layout of the Footer component.
    *
-   * @method render
-   * @event
+   * @event render
+   * @returns {HTML}
    */
   render() {
     return (

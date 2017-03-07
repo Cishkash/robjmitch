@@ -13,8 +13,8 @@ class Navigation extends Component {
    * Render method. Renders the layout of the Navigation component. Contains
    * a modified
    *
-   * @method render
-   * @event
+   * @event render
+   * @returns {HTML}
    */
   render() {
     return (
@@ -28,12 +28,12 @@ class Navigation extends Component {
               <nav className="navbar navbar-fluid navbar-toggleable-md">
                 <button className="navbar-toggler navbar-toggler-right"
                         type="button" data-toggle="collapse"
-                        data-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        data-target="#navbar-nav-main"
+                        aria-controls="navbar-nav-main" aria-expanded="false"
                         aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="collapse navbar-collapse" id="navbar-nav-main">
                   <div className="navbar-nav">
                     <small>
                       <Link to="/" className="nav-item nav-link">Home</Link>
@@ -62,10 +62,10 @@ class Navigation extends Component {
                     </small>
                   </div>
                 </div>
-              </nav>
-            </div>
-          </div>
-        </div>
+              </nav> {/* navbar */}
+            </div> {/* row */}
+          </div> {/* .container */}
+        </div> {/* .navigation-row */}
       </div>
     );
   }
