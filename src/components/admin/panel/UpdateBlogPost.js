@@ -10,7 +10,7 @@ import BlogList from '../../BlogList.js';
  * @class Component.DeleteBlogPost
  * @extends React.Component
  */
-class DeleteBlogPost extends Component {
+class UpdateBlogPost extends Component {
   /**
    * DeleteBlogPost constructor. Sets initial state.
    *
@@ -63,10 +63,13 @@ class DeleteBlogPost extends Component {
     if (!this.props.blogs) return null;
     return (
       <div id="DeleteBlogPost">
-        <BlogList onClick={this.handleDelete} blogs={this.props.blogs} />
+        <BlogList
+          update="true"
+          onDelete={this.handleDelete}
+          blogs={this.props.blogs} />
       </div>
     );
   }
 }
 
-export default DeleteBlogPost;
+export default UpdateBlogPost;

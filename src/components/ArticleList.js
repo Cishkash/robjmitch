@@ -95,7 +95,7 @@ class ArticleList extends Component {
 
     return (
       <div id="ArticleList" className="my-3">
-        <div class="list-group">
+        <div className="list-group">
           <strong className="list-group-item list-group-item-info">
             Interesting articles:
           </strong>

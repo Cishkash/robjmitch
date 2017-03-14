@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import Remarkable from 'remarkable';
 import 'whatwg-fetch';
-
-let md = new Remarkable();
-// Remarkable options
-md.set({
-  breaks: true
-});
 
 /**
  * The specific full post of a blog entry by dynamic segment.
@@ -50,20 +43,9 @@ class Post extends Component {
    * @return {HTML}
    */
   render() {
-    if (!this.state.post) return null;
-    function postBody(body) {
-      return {__html: md.render(body)};
-    }
     return (
       <div id="Post" className="container">
-        <div className="row">
-          <article className="col-10 mt-3">
-            <h2>{this.state.post.title}</h2>
-            <small>A blog post by: {this.state.post.author}</small>
-            <p className="mt-3"
-               dangerouslySetInnerHTML={postBody(this.state.post.body)}></p>
-          </article>
-        </div>
+        {this.props.children}
       </div>
     );
   }

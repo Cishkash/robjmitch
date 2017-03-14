@@ -11,7 +11,10 @@ import '../styles/BlogList.scss';
  * ```
  * <BlogList blogs={this.props.blogs} />
  * -or-
- * <BlogList onClick={this.handleDelete} blogs={this.props.blogs} />
+ * <BlogList
+ *   onDelete={this.handleDelete}
+ *   onUpdate={this.handleUpdate}
+ *   blogs={this.props.blogs} />
  * ```
  * Latter onClick parameter will make the red "danger" button appear to remove
  * the blog post. This option reauthenticates the user on the backend to ensure
@@ -46,19 +49,24 @@ class BlogList extends Component {
           <p>{blogs[blog].body}</p>
           <div className="row justify-content-end">
             <div className="col text-right">
-              {/* I really need to change this method name once I implement
-                  the ability to update blog posts */}
-              {this.props.onClick ? (
+              {this.props.onDelete ? (
                 <button type="button"
                   className="btn btn-danger btn-sm d-inline-flex mr-3"
                   aria-label="Close"
                   value={blog}
-                  onClick={(e) => this.props.onClick(e)}>
-                  Delete {blog}
+                  onClick={(e) => this.props.onDelete(e)}>
+                  Delete post
                 </button>
               ) : ''}
+              {this.props.update ? (
+                <Link
+                  className="btn btn-primary btn-sm d-inline-flex mr-3"
+                  to={`/post/${blog}/update`}>
+                  Update post
+                </Link>
+                ) : ''}
               <span className="d-inline-flex">
-                <Link to={`/post/${blog}`}>Read the rest</Link>
+                <Link to={`/post/${blog}/view`}>Read the rest</Link>
               </span>
             </div>
           </div>

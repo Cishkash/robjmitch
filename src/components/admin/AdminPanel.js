@@ -4,7 +4,7 @@ import 'whatwg-fetch';
 import RibbyTabs from '../pandarium/RibbyTabs.js';
 import Tab from '../pandarium/Tab.js';
 import AddBlogPost from './panel/AddBlogPost.js';
-import DeleteBlogPost from './panel/DeleteBlogPost.js';
+import UpdateBlogPost from './panel/UpdateBlogPost.js';
 import AddArticle from './panel/AddArticle.js';
 
 import '../../styles/AdminPanel.scss';
@@ -93,6 +93,23 @@ class AdminPanel extends Component {
     );
   }
   /**
+   * Allows an authenticated user to log out of firebase.
+   *
+   * @method logout
+   * @return {undefined}
+   */
+  logOut() {
+    fetch(`${process.env.API_URL}/admin/logout`).then(
+      (response) => {
+        if (response.status === 200) {
+          this.props.router.push('/');
+        }
+      }, (err) => {
+        console.warn('There was an issue logging the user out.', err);
+      }
+    );
+  }
+  /**
    * Render method. Renders the layout of the AdminPanel component.
    *
    * @event render
@@ -108,8 +125,8 @@ class AdminPanel extends Component {
               <Tab tabName="AddBlogPost">
                 <AddBlogPost update={this.fetchBlogs}/>
               </Tab>
-              <Tab tabName="DeleteBlogPost">
-                <DeleteBlogPost
+              <Tab tabName="UpdateBlogPost">
+                <UpdateBlogPost
                   fetchBlogs={this.fetchBlogs}
                   blogs={this.state.blogs}/>
               </Tab>
@@ -145,8 +162,8 @@ AdminPanel.defaultProps = {
       tabId: 'AddBlogPost',
       displayName: 'Add a blog post'
     }, {
-      tabId: 'DeleteBlogPost',
-      displayName: 'Delete a blog'
+      tabId: 'UpdateBlogPost',
+      displayName: 'Update a blog'
     }, {
       tabId: 'AddArticle',
       displayName: 'Add an article'
