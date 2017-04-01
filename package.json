@@ -1,6 +1,7 @@
 {
   "name": "blog",
   "version": "0.1.0",
+  "homepage": "http://robjmitch.com/",
   "private": true,
   "devDependencies": {
     "autoprefixer": "6.5.1",
