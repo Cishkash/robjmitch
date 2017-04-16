@@ -19,8 +19,8 @@ class Resume extends Component {
   render() {
     return (
       <div id="Resume" className="container">
-        <div className="row justify-content-center">
-          <section className="col-8">
+        <div className="row justify-content-around col-sm-12 col-md-8">
+          <section>
             <h3 className="generic-section">Front End Developer</h3>
             <ul>
               <li>Ember developer experienced with modern JavaScript frameworks
@@ -35,14 +35,14 @@ class Resume extends Component {
               </li>
             </ul>
           </section>
-          <section className="col-8">
+          <section>
             <h3 className="generic-section">Technical Skills</h3>
             <p>JavaScript, Ember, jQuery, QUnit, ES6, React, Sass, Node.js,
                Express, Bootstrap 3+, Foundation, HTML5, Handlebars, Git, GitHub,
                BitBucket, Jira, Photoshop, Python, CherryPy, Mako
             </p>
           </section>
-          <section className="col-8">
+          <section>
             <h3 className="generic-section">Experience</h3>
             <h5>Healthsparq, UI Developer - Portland, Oregon</h5>
             <h6 className="text-muted">May 2015 - Present</h6>
@@ -84,7 +84,7 @@ class Resume extends Component {
               </li>
             </ul>
           </section>
-          <section className="col-8">
+          <section>
             <h3 className="generic-section">Education</h3>
             <h5>Wayne Community College</h5>
             <h6>Associates in Applied Science, Information Systems</h6>
