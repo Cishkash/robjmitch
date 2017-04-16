@@ -60,14 +60,14 @@ class Blog extends Component {
     return (
       <div id="Blog" className="container mt-3">
         <div className="row justify-content-md-left">
-          <div className="col-9">
+          <div className="col-sm-12 col-md-9">
             {this.state.error ? (
               <div className="alert alert-info" role="alert">
                 <strong>Oh no!</strong> There doesn't appear to be anything here.
               </div>
             ) : ( <BlogList blogs={this.state.blogs}/> )}
           </div>
-          <aside className="col-3">
+          <aside className="col-sm-12 col-md-3">
             <div className="sidebar">
               <ArticleList />
             </div>
