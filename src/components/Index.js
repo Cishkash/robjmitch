@@ -20,7 +20,7 @@ class Index extends Component {
         <img src="/images/landing-image.jpg" className="img-fluid" role="presentation" />
         <div className="container mt-5">
           <div className="row">
-            <section className="col-9">
+            <section className="col-sm-12 col-md-9">
               <h2>Let's talk about me for a little bit</h2>
               <p className="mt-4">
                 I'm a five year experienced front end web developer. You'll

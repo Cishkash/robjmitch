@@ -15,11 +15,11 @@ class App extends Component {
         <div className="row">
           <div className="container">
             <div className="row">
-              <div className="col-9">
+              <div className="col-sm-12 col-md-9">
                 <small>Made with <span><IconHeart /></span> by Robby "Ribbeth" Mitchell</small><br/>
                 <small>&copy;2017 Robert Mitchell</small>
               </div>
-              <aside className="col-3">
+              <aside className="hidden-sm-down col-md-3">
                 <small>
                   Constructed with <a href="https://facebook.github.io/react/">React</a>.
                 </small><br/>
