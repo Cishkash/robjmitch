@@ -19,7 +19,7 @@ class PostView extends Post {
     return (
       <div id="PostView">
         <div className="row">
-          <article className="col-10 mt-3">
+          <article className="col-sm-12 col-md-10 mt-3">
             <h2>{this.state.post.title}</h2>
             <small>A blog post by: {this.state.post.author}</small>
             <p className="mt-3"
