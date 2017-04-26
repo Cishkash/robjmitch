@@ -18,7 +18,11 @@ class Post extends Component {
    */
   constructor() {
     super();
-    this.state = {post: null}
+    this.state = {
+      author: '',
+      body: '',
+      title: ''
+    }
   }
   /**
    * Fetches the post of the dynamic segment after the component mounts.
@@ -32,8 +36,23 @@ class Post extends Component {
       if (post.status === 200) {
         return post.json();
       }
-    }).then(post => this.setState({post: post})).catch( ex => {
+    }).then(post => {
+      this.setState({
+        author: post.author,
+        body: post.body,
+        title: post.title
+      });
+    }).catch( ex => {
       console.error('Failed to fetch the post', ex);
+    });
+  }
+
+  handleChange(evt) {
+    const target = evt.target,
+          name = target.name;
+
+    this.setState({
+      [name]: target.value
     });
   }
   /**

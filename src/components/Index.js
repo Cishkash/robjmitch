@@ -17,7 +17,11 @@ class Index extends Component {
   render() {
     return (
       <div id="Index">
-        <img src="/images/landing-image.jpg" className="img-fluid" role="presentation" />
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+            <img src="/images/landing-image.jpg" className="img-fluid" role="presentation" />
+          </div>
+        </div>
         <div className="container mt-5">
           <div className="row">
             <section className="col-sm-12 col-md-9">

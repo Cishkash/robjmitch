@@ -83,8 +83,7 @@ class Resume extends Component {
                   typical marketing techniques like A/B testing.
               </li>
             </ul>
-          </section>
-          <section>
+
             <h3 className="generic-section">Education</h3>
             <h5>Wayne Community College</h5>
             <h6>Associates in Applied Science, Information Systems</h6>
