@@ -12,7 +12,7 @@ md.set({
 
 class PostView extends Post {
   render() {
-    if (!this.state.post) return null;
+    if (!this.state.body) return null;
     function postBody(body) {
       return {__html: md.render(body)};
     }
@@ -20,10 +20,10 @@ class PostView extends Post {
       <div id="PostView">
         <div className="row">
           <article className="col-sm-12 col-md-10 mt-3">
-            <h2>{this.state.post.title}</h2>
-            <small>A blog post by: {this.state.post.author}</small>
+            <h2>{this.state.title}</h2>
+            <small>A blog post by: {this.state.author}</small>
             <p className="mt-3"
-               dangerouslySetInnerHTML={postBody(this.state.post.body)}></p>
+               dangerouslySetInnerHTML={postBody(this.state.body)}></p>
           </article>
         </div>
       </div>
