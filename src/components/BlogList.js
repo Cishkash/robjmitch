@@ -40,35 +40,33 @@ class BlogList extends Component {
     }
 
     return blogArr.map( (blog) => (
-      <article id="BlogList" className="media post-card p-4 my-3 rounded" key={blog}>
-        <img className="d-flex align-self-start mr-3 rounded-circle"
-          src={blogs[blog].image} role="presentation" />
-        <div className="media-body">
+      <article className="d-flex media col-3 my-3" key={blog}>
+        <div className="media-body p-3 post-card h-100">
           <small className="text-muted">A blog by Robby Mitchell</small>
           <h3 className="mt-0">{blogs[blog].title}</h3>
           <p>{blogs[blog].body}</p>
-          <div className="row justify-content-end">
-            <div className="col text-right">
-              {this.props.onDelete ? (
-                <button type="button"
-                  className="btn btn-danger btn-sm d-inline-flex mr-3"
-                  aria-label="Close"
-                  value={blog}
-                  onClick={(e) => this.props.onDelete(e)}>
-                  Delete post
-                </button>
-              ) : ''}
-              {this.props.update ? (
-                <Link
-                  className="btn btn-primary btn-sm d-inline-flex mr-3"
-                  to={`/post/${blog}/update`}>
-                  Update post
-                </Link>
-                ) : ''}
-              <span className="d-inline-flex">
-                <Link to={`/post/${blog}/view`}>Read the rest</Link>
-              </span>
-            </div>
+          <div className="d-inline-flex">
+            <span className="d-inline-flex align-self-start">
+              <Link to={`/post/${blog}/view`}>Read the rest</Link>
+            </span>
+          </div>
+          <div className="col">
+            {this.props.onDelete ? (
+              <button type="button"
+                className="btn btn-danger btn-sm d-inline-flex mr-3"
+                aria-label="Close"
+                value={blog}
+                onClick={(e) => this.props.onDelete(e)}>
+                Delete post
+              </button>
+            ) : ''}
+            {this.props.update ? (
+              <Link
+                className="btn btn-primary btn-sm d-inline-flex mr-3"
+                to={`/post/${blog}/update`}>
+                Update post
+              </Link>
+            ) : ''}
           </div>
         </div>
       </article>
@@ -82,7 +80,7 @@ class BlogList extends Component {
    */
   render() {
     return (
-      <div id="BlogList">
+      <div id="BlogList" className="d-inline-flex flex-wrap">
         {this.iterateBlogs(this.props.blogs)}
       </div>
     )

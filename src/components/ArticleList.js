@@ -97,7 +97,7 @@ class ArticleList extends Component {
       <div id="ArticleList" className="my-3">
         <div className="list-group">
           <strong className="list-group-item list-group-item-info">
-            Interesting articles:
+            Things I found interesting:
           </strong>
           {this.iterateArticles(this.state.articles)}
         </div>

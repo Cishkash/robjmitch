@@ -13,6 +13,11 @@ md.set({
 class PostUpdate extends Post {
   constructor() {
     super();
+
+    this.state = {
+      articleLink: '',
+      articleTitle: ''
+    }
   }
   /**
    * Adds a check for an authenticated user before they are able to access this
@@ -32,6 +37,24 @@ class PostUpdate extends Post {
       this.props.router.push('/');
     });
   }
+  /**
+   * Sets the state of the component to the respective passed props
+   *
+   * @event componentDidMount
+   * @return {undefined}
+   */
+  componentDidMount() {
+    this.setState({
+      articleLink: this.props.articleLink
+    });
+  }
+  /**
+   * Allows a user to post an update to a blog post. Gathers the state of the
+   * inputs and sends them off to the backend.
+   *
+   * @method updatePost
+   * @returns {undefined}
+   */
   updatePost() {
     const options = {
             method: 'POST',
@@ -63,7 +86,12 @@ class PostUpdate extends Post {
       }
     )
   }
-
+  /**
+   * Renders the layout of the `PostUpdate` component
+   *
+   * @event render
+   * @returns {HTML}
+   */
   render() {
     if (!this.state.title || !this.state.author || !this.state.body) return null;
     return (
