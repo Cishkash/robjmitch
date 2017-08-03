@@ -43,7 +43,7 @@ class PostUpdate extends Post {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              id: this.props.params.postId,
+              blog_id: this.props.params.postId,
               author: this.state.author,
               body: this.state.body,
               title: this.state.title

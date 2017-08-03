@@ -40,7 +40,7 @@ class BlogList extends Component {
     }
 
     return blogArr.map( (blog) => (
-      <article className="d-flex media col-3 my-3" key={blog}>
+      <article className="d-flex media col-sm-12 col-md-3 my-3" key={blog}>
         <div className="media-body p-3 post-card h-100">
           <small className="text-muted">A blog by Robby Mitchell</small>
           <h3 className="mt-0">{blogs[blog].title}</h3>
