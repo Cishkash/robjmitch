@@ -70,7 +70,7 @@ class BlogList extends Component {
           </div>
         </div>
       </article>
-    ));
+    )).reverse();
   }
   /**
    * Renders the layout of the `BlogList` component.

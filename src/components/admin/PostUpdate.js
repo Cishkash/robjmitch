@@ -11,14 +11,6 @@ md.set({
 });
 
 class PostUpdate extends Post {
-  constructor() {
-    super();
-
-    this.state = {
-      articleLink: '',
-      articleTitle: ''
-    }
-  }
   /**
    * Adds a check for an authenticated user before they are able to access this
    * route.Just a tricksy way till I sort out having the same dynamic segment
@@ -38,17 +30,6 @@ class PostUpdate extends Post {
     });
   }
   /**
-   * Sets the state of the component to the respective passed props
-   *
-   * @event componentDidMount
-   * @return {undefined}
-   */
-  componentDidMount() {
-    this.setState({
-      articleLink: this.props.articleLink
-    });
-  }
-  /**
    * Allows a user to post an update to a blog post. Gathers the state of the
    * inputs and sends them off to the backend.
    *
@@ -62,18 +43,18 @@ class PostUpdate extends Post {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              articleLink: this.state.articleLink,
-              articleTitle: this.state.articleTitle
+              id: this.props.params.postId,
+              author: this.state.author,
+              body: this.state.body,
+              title: this.state.title
             })
           };
 
-    fetch(`${process.env.API_URL}/addArticle`, options).then(
+    fetch(`${process.env.API_URL}/updatePost`, options).then(
       (response) => {
         // Set the state for successfully posting an article
         this.setState({
-          articleLink: '',
-          articlePosted: true,
-          articleTitle: ''
+          articlePosted: true
         });
 
         // Reset the resolved feedback
@@ -101,7 +82,7 @@ class PostUpdate extends Post {
             <h5>Title</h5>
             <input className="d-flex w-100 form-control"
               name="title"
-              onChange={() => this.handleChange}
+              onChange={this.handleChange}
               value={this.state.title}/>
             <div className="my-3">
               <strong>Author:</strong><br />
@@ -116,12 +97,12 @@ class PostUpdate extends Post {
               <strong>Body:</strong>
               <textarea className="form-control d-flex w-100 mt-3"
                 name="body"
-                onChange={() => this.handleChange}
-                value={this.state.body}>
+                onChange={this.handleChange}
+                defaultValue={this.state.body}>
               </textarea>
             </div>
             <div className="card-footer text-right">
-              <button onClick={() => this.updatePost()} type="submit"
+              <button onClick={() =>this.updatePost()} type="submit"
                 className="btn btn-primary">
                 Submit update
               </button>

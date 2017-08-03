@@ -23,6 +23,8 @@ class Post extends Component {
       body: '',
       title: ''
     }
+
+    this.handleChange = this.handleChange.bind(this);
   }
   /**
    * Fetches the post of the dynamic segment after the component mounts.
